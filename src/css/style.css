@@ -1,0 +1,102 @@
+@import "./reset.css";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+.mapboxgl-map {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+body,
+main {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#year {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  height: 50px;
+  width: calc(100% - 32px);
+  max-width: 600px;
+  margin: auto;
+}
+
+input[type="range"] {
+  appearance: none;
+  background-color: #ccc;
+}
+
+input[type="range"]::-moz-range-track,
+input[type="range"]::-ms-track,
+input[type="range"]::-webkit-slider-runnable-track {
+  border-radius: 0;
+  height: 50px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 100%;
+}
+
+/* Need to split these out, or not applied, unclear why */
+
+input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  background-color: #000;
+  width: 50px;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #000;
+  width: 50px;
+  height: 100%;
+  border-radius: 0;
+}
+
+input[type="range"]::-ms-slider-thumb {
+  -ms-progress-appearance: none;
+  background-color: #000;
+  width: 50px;
+  height: 100%;
+  border-radius: 0;
+}
+
+@media screen and (min-width: 600px) {
+  #year {
+    left: 32px;
+    right: 32px;
+    bottom: 48px;
+    width: calc(100% - 64px);
+  }
+}
