@@ -3,3 +3,11 @@ node_modules
 dist
 dist-ssr
 *.local
+data/*.*
+data/census/*.*
+data/points/*.*
+data/tiles/*.*
+!data/.keep
+!data/census/.keep
+!data/points/.keep
+!data/tiles/.keep
