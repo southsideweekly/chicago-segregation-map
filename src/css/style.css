@@ -38,20 +38,39 @@ main {
   bottom: 0;
 }
 
-#year {
+.year-control {
   position: absolute;
   left: 16px;
   right: 16px;
   bottom: 16px;
-  height: 50px;
   width: calc(100% - 32px);
   max-width: 600px;
   margin: auto;
+  padding: 8px;
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.year-control {
+  display: flex;
+  align-items: center;
+}
+
+.year-control .year-label {
+  flex-grow: 0;
+}
+.year-control #year {
+  flex-grow: 1;
+}
+
+#year {
+  height: 50px;
+  margin: 0 8px;
 }
 
 input[type="range"] {
   appearance: none;
   background-color: #ccc;
+  cursor: pointer;
 }
 
 input[type="range"]::-moz-range-track,
@@ -93,7 +112,7 @@ input[type="range"]::-ms-slider-thumb {
 }
 
 @media screen and (min-width: 600px) {
-  #year {
+  .year-control {
     left: 32px;
     right: 32px;
     bottom: 48px;
