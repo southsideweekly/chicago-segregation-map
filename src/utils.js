@@ -1,6 +1,7 @@
 export function setMapLayerSource(map, layerId, source) {
   const oldLayers = map.getStyle().layers
   const layerIndex = oldLayers.findIndex((l) => l.id === layerId)
+  if (layerIndex < 0) return
   const layerDef = oldLayers[layerIndex]
   const before = oldLayers[layerIndex + 1] && oldLayers[layerIndex + 1].id
   layerDef.source = source

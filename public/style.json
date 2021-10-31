@@ -11,7 +11,7 @@
     "tracts-1940": {
       "type": "vector",
       "tiles": [
-        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1940/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1940/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -21,7 +21,7 @@
     "tracts-1950": {
       "type": "vector",
       "tiles": [
-        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1950/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1950/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -31,7 +31,7 @@
     "tracts-1960": {
       "type": "vector",
       "tiles": [
-        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1960/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1960/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -41,7 +41,57 @@
     "tracts-1970": {
       "type": "vector",
       "tiles": [
-        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-1980": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-1990": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-2000": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-2010": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-2020": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -195,6 +245,7 @@
       "source": "tracts-1940",
       "source-layer": "tracts",
       "paint": {
+        "circle-opacity": 0.6,
         "circle-radius": {
           "base": 1.75,
           "stops": [
@@ -206,13 +257,13 @@
           "match",
           ["get", "race"],
           "white",
-          "red",
+          "#d62728",
           "black",
-          "blue",
+          "#1f77b4",
           "other",
-          "purple",
+          "#9467bd",
           "nonwhite",
-          "purple",
+          "#9467bd",
           "#ccc"
         ]
       }

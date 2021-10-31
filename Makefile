@@ -1,4 +1,4 @@
-S3_BUCKET = ilfairtax-map
+S3_BUCKET = ssw-segregation-map-demo
 YEARS = 1940 1950 1960 1970
 
 all: $(foreach year, $(YEARS), data/tiles/tracts-$(year))
@@ -8,8 +8,16 @@ clean:
 	rm -rf data/points/*.geojson data/tiles/*.mbtiles
 
 .PHONY:
+deploy: deploy-tiles
+	aws s3 sync ./dist s3://$(S3_BUCKET) --size-only --acl=public-read --cache-control "public, max-age=0, must-revalidate"
+
+.PHONY:
 deploy-tiles:
 	aws s3 sync data/tiles/ s3://$(S3_BUCKET)/tiles/ --size-only --acl=public-read --content-encoding=gzip --cache-control "public, max-age=86400"
+
+.PHONY:
+build:
+	npm run build
 
 data/tiles/%: data/tiles/%.mbtiles
 	mkdir $@
