@@ -1,7 +1,7 @@
 S3_BUCKET = ssw-segregation-map-demo
 YEARS = 1940 1950 1960 1970
 
-all: $(foreach year, $(YEARS), data/tiles/tracts-$(year))
+all: $(foreach year, $(YEARS), data/tiles/tracts-$(year)) data/tiles/redlining
 
 .PHONY:
 clean:
@@ -33,6 +33,20 @@ data/tiles/%.mbtiles: data/points/%.geojson
 		--no-tile-stats \
 		--force \
 		-L tracts:$< -o $@
+
+data/tiles/redlining.mbtiles: data/layers/redlining.geojson
+	tippecanoe \
+		--simplification=10 \
+		--simplify-only-low-zooms \
+		--minimum-zoom=8 \
+		--maximum-zoom=15 \
+		--no-tile-stats \
+		--generate-ids \
+		--detect-shared-borders \
+		--grid-low-zooms \
+		--coalesce-smallest-as-needed \
+		--force \
+		-L redlining:$< -o $@
 
 data/points/tracts-1970.geojson: data/census/tracts_1970.geojson data/census/chicago.geojson
 	mapshaper -i $< \
@@ -73,6 +87,16 @@ data/points/tracts-1940.geojson: data/census/tracts_1940.geojson data/census/chi
 		-each 'race = {red:"white",blue:"nonwhite"}[fill]' \
 		-filter-fields race \
 		-o $@
+
+data/layers/redlining.geojson: data/layers/usa-redlining.geojson data/census/chicago.geojson
+	mapshaper -i $< \
+		-clip $(filter-out $<,$^) \
+		-filter-slivers \
+		-filter-fields holc_grade \
+		-o $@
+
+data/layers/usa-redlining.geojson:
+	wget -O $@ https://dsl.richmond.edu/panorama/redlining/static/fullDownload.geojson
 
 data/census/chicago.geojson:
 	wget -O $@ 'https://data.cityofchicago.org/api/geospatial/sp34-6z76?method=export&format=GeoJSON'

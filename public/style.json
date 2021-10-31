@@ -8,6 +8,16 @@
       "tiles": ["https://tiles.citybureau.org/{z}/{x}/{y}.pbf"],
       "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>"
     },
+    "redlining": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/redlining/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
     "tracts-1940": {
       "type": "vector",
       "tiles": [
@@ -237,6 +247,41 @@
             [14, 5]
           ]
         }
+      }
+    },
+    {
+      "id": "redlining",
+      "type": "fill",
+      "source": "redlining",
+      "source-layer": "redlining",
+      "paint": {
+        "fill-opacity": 0.2,
+        "fill-color": [
+          "match",
+          ["get", "holc_grade"],
+          "A",
+          "#76a865",
+          "B",
+          "#7cb5bd",
+          "C",
+          "#ffff00",
+          "D",
+          "#d9838d",
+          "#ccc"
+        ],
+        "fill-outline-color": [
+          "match",
+          ["get", "holc_grade"],
+          "A",
+          "#76a865",
+          "B",
+          "#7cb5bd",
+          "C",
+          "#ffff00",
+          "D",
+          "#d9838d",
+          "#ccc"
+        ]
       }
     },
     {

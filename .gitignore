@@ -5,10 +5,13 @@ dist-ssr
 *.local
 data/*.*
 data/census/*.*
+data/layers/*.*
 data/points/*.*
 data/tiles/*.*
 !data/.keep
 !data/census/.keep
+!data/layers/.keep
 !data/points/.keep
 !data/tiles/.keep
 data/tiles/tracts*
+data/tiles/redlining*
