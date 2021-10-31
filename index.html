@@ -21,11 +21,20 @@
   <body>
     <main>
       <div id="map"></div>
-      <div class="year-control">
-        <span class="year-label">1940</span>
-        <input id="year" type="range" min="1910" max="2020" step="10" />
-        <span class="year-label">2020</span>
-      </div>
+      <form id="controls" action="#" method="GET">
+        <div class="year-control">
+          <span class="year-label">1940</span>
+          <input
+            id="year"
+            type="range"
+            min="1940"
+            max="2020"
+            step="10"
+            value="1940"
+          />
+          <span class="year-label">2020</span>
+        </div>
+      </form>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>

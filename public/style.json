@@ -7,6 +7,46 @@
       "maxzoom": 14,
       "tiles": ["https://tiles.citybureau.org/{z}/{x}/{y}.pbf"],
       "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>"
+    },
+    "tracts-1940": {
+      "type": "vector",
+      "tiles": [
+        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1940/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-1950": {
+      "type": "vector",
+      "tiles": [
+        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1950/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-1960": {
+      "type": "vector",
+      "tiles": [
+        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1960/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
+    },
+    "tracts-1970": {
+      "type": "vector",
+      "tiles": [
+        "https://d33h73zeugjm0l.cloudfront.net/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "NHGIS"
     }
   },
   "sprite": "https://openmaptiles.github.io/maptiler-toner-gl-style/sprite",
@@ -147,6 +187,34 @@
             [14, 5]
           ]
         }
+      }
+    },
+    {
+      "id": "tract-points",
+      "type": "circle",
+      "source": "tracts-1940",
+      "source-layer": "tracts",
+      "paint": {
+        "circle-radius": {
+          "base": 1.75,
+          "stops": [
+            [9, 2],
+            [15, 5]
+          ]
+        },
+        "circle-color": [
+          "match",
+          ["get", "race"],
+          "white",
+          "red",
+          "black",
+          "blue",
+          "other",
+          "purple",
+          "nonwhite",
+          "purple",
+          "#ccc"
+        ]
       }
     },
     {

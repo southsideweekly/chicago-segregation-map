@@ -11,3 +11,4 @@ data/tiles/*.*
 !data/census/.keep
 !data/points/.keep
 !data/tiles/.keep
+data/tiles/tracts*
