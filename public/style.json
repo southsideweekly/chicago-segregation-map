@@ -16,7 +16,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://dsl.richmond.edu/panorama/redlining/\" target=\"_blank\" rel=\"noopener noreferrer\">Mapping Inequality, American Panorama </a>"
     },
     "tracts-1940": {
       "type": "vector",
@@ -26,7 +26,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1950": {
       "type": "vector",
@@ -36,7 +36,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1960": {
       "type": "vector",
@@ -46,7 +46,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1970": {
       "type": "vector",
@@ -56,7 +56,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1980": {
       "type": "vector",
@@ -66,7 +66,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1990": {
       "type": "vector",
@@ -76,7 +76,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-2000": {
       "type": "vector",
@@ -86,7 +86,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-2010": {
       "type": "vector",
@@ -96,7 +96,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-2020": {
       "type": "vector",
@@ -106,7 +106,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     }
   },
   "sprite": "https://openmaptiles.github.io/maptiler-toner-gl-style/sprite",

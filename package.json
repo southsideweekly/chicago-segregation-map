@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@nprapps/sidechain": "^1.1.4",
-    "mapbox-gl": "^1.13.2"
+    "formdata-polyfill": "^4.0.10",
+    "mapbox-gl": "^1.13.2",
+    "url-search-params-polyfill": "^8.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",

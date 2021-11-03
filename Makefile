@@ -1,7 +1,7 @@
 S3_BUCKET = ssw-segregation-map-demo
 YEARS = 1940 1950 1960 1970 1980 1990 2000 2010 2020
 
-all: $(foreach year, $(YEARS), data/tiles/tracts-$(year)) data/tiles/redlining
+all: $(foreach year, $(YEARS), data/tiles/tracts-$(year)) data/tiles/redlining data/layers/school-closures.geojson
 
 .PHONY:
 clean:
@@ -13,6 +13,7 @@ deploy: deploy-tiles
 
 .PHONY:
 deploy-tiles:
+	aws s3 cp data/layers/school-closures.geojson s3://$(S3_BUCKET)/layers/school-closures.geojson --acl=public-read --cache-control "public, max-age=86400"
 	aws s3 sync data/tiles/ s3://$(S3_BUCKET)/tiles/ --size-only --acl=public-read --content-encoding=gzip --cache-control "public, max-age=86400"
 
 .PHONY:
@@ -151,6 +152,10 @@ data/points/tracts-1940.geojson: data/census/tracts_1940.geojson data/census/chi
 		-filter-fields race \
 		-o $@
 
+data/layers/school-closures.geojson:
+	wget -O - https://s3.amazonaws.com/projects.chicagoreporter.com/graphics/newschoolmap/geo_schools.geojson | \
+	cut -c 10- | rev | cut -c 2- | rev | \
+	mapshaper -i - -filter-fields name,address -o $@
 
 # TODO: WBEZ HMDA data https://data.world/wbezchicago/chicago-purchase-originations-2012-2018
 

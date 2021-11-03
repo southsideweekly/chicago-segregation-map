@@ -33,7 +33,12 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://dsl.richmond.edu/panorama/redlining/\" target=\"_blank\" rel=\"noopener noreferrer\">Mapping Inequality, American Panorama </a>"
+    },
+    "school-closures": {
+      "type": "geojson",
+      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/school-closures.geojson",
+      "attribution": "The Chicago Reporter"
     },
     "tracts-1940": {
       "type": "vector",
@@ -43,7 +48,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1950": {
       "type": "vector",
@@ -53,7 +58,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1960": {
       "type": "vector",
@@ -63,7 +68,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1970": {
       "type": "vector",
@@ -73,7 +78,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1980": {
       "type": "vector",
@@ -83,7 +88,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-1990": {
       "type": "vector",
@@ -93,7 +98,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-2000": {
       "type": "vector",
@@ -103,7 +108,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-2010": {
       "type": "vector",
@@ -113,7 +118,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     },
     "tracts-2020": {
       "type": "vector",
@@ -123,7 +128,7 @@
       "minzoom": 8,
       "maxzoom": 15,
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
-      "attribution": "NHGIS"
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
     }
   },
   "sprite": "https://openmaptiles.github.io/dark-matter-gl-style/sprite",
@@ -832,25 +837,12 @@
     },
     {
       "id": "school-closures",
-      "type": "line",
-      "source": "redlining",
-      "source-layer": "redlining",
+      "type": "circle",
+      "source": "school-closures",
       "paint": {
-        "line-color": [
-          "match",
-          ["get", "holc_grade"],
-          "A",
-          "#76a865",
-          "B",
-          "#7cb5bd",
-          "C",
-          "#ffff00",
-          "D",
-          "#d9838d",
-          "#ccc"
-        ],
-        "line-opacity": 0.0,
-        "line-width": 1.5
+        "circle-opacity": 0.8,
+        "circle-radius": 4,
+        "circle-color": "yellow"
       }
     },
     {
