@@ -61,7 +61,7 @@
     "tracts-1980": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1980/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -71,7 +71,7 @@
     "tracts-1990": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1990/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -81,7 +81,7 @@
     "tracts-2000": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-2000/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -91,7 +91,7 @@
     "tracts-2010": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-2010/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -101,7 +101,7 @@
     "tracts-2020": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-2020/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -294,8 +294,8 @@
         "circle-radius": {
           "base": 1.75,
           "stops": [
-            [9, 2],
-            [15, 5]
+            [9, 1.5],
+            [15, 7.5]
           ]
         },
         "circle-color": [
@@ -305,11 +305,17 @@
           "#d62728",
           "black",
           "#1f77b4",
+          "nonwhite-black",
+          "#1f77b4",
+          "hisp",
+          "#2ca02c",
+          "asian",
+          "#e377c2",
           "other",
           "#9467bd",
           "nonwhite",
           "#9467bd",
-          "#ccc"
+          "#9467bd"
         ]
       }
     },

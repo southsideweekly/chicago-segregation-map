@@ -22,17 +22,39 @@
     <main>
       <div id="map"></div>
       <form id="controls" action="#" method="GET">
+        <div class="layers-control">
+          <fieldset>
+            <legend class="visually-hidden">Layers</legend>
+            <div class="layer-options">
+              <label>
+                <input name="layer" type="checkbox" value="redlining" />
+                <span>Redlining</span>
+              </label>
+              <label>
+                <input name="layer" type="checkbox" value="school-closures" />
+                <span>School Closures</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
         <div class="year-control">
-          <span class="year-label">1940</span>
-          <input
-            id="year"
-            type="range"
-            min="1940"
-            max="2020"
-            step="10"
-            value="1940"
-          />
-          <span class="year-label">2020</span>
+          <div class="year-label">
+            <label for="year">Year</label>
+            <span id="year-value"></span>
+          </div>
+          <div class="year-bar">
+            <span class="year-label">1940</span>
+            <input
+              id="year"
+              name="year"
+              type="range"
+              min="1940"
+              max="2020"
+              step="10"
+              value="2020"
+            />
+            <span class="year-label">2020</span>
+          </div>
         </div>
       </form>
     </main>

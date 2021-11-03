@@ -27,7 +27,7 @@ export function formToObj(form) {
   const formData = new FormData(form)
 
   formNames.map((name) => {
-    let value = formData.get(name)
+    let value = formData.getAll(name).join(",")
     if (form.elements[name].type === "checkbox") {
       value = !!value
     }
@@ -36,10 +36,10 @@ export function formToObj(form) {
   return formObj
 }
 
-export function formObjToSearchParams(formObj) {
+export function formToSearchParams(form) {
   const params = new URLSearchParams({
     ...Object.fromEntries(new URLSearchParams(window.location.search)),
-    ...Object.fromEntries(Object.entries(formObj).filter((entry) => entry[1])),
+    ...Object.fromEntries(Object.entries(formToObj(form))),
   })
   window.history.replaceState(
     {},
@@ -48,4 +48,23 @@ export function formObjToSearchParams(formObj) {
       window.location.pathname
     }${params.toString() === `` ? `` : `?${params}`}${window.location.hash}`
   )
+}
+
+export function searchParamsToForm(form) {
+  const searchParams = new URLSearchParams(window.location.search)
+
+  for (let [key, value] of searchParams.entries()) {
+    if (!(key in form.elements)) return
+    const input = form.elements[key]
+    if (input.length > 1) {
+      value = value.split(",")
+      input.forEach((inputEl) => {
+        inputEl.checked = value.includes(inputEl.value)
+      })
+    } else if (input.type === "checkbox") {
+      input.checked = !!value
+    } else {
+      input.value = value
+    }
+  }
 }

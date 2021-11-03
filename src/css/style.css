@@ -30,6 +30,26 @@ main {
   padding: 0;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.visually-hidden-focusable:not(:focus) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 #map {
   position: absolute;
   top: 0;
@@ -38,11 +58,24 @@ main {
   bottom: 0;
 }
 
+.layers-control {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  min-width: 200px;
+  padding: 8px;
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
 .year-control {
   position: absolute;
   left: 16px;
   right: 16px;
   bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: calc(100% - 32px);
   max-width: 600px;
   margin: auto;
@@ -50,9 +83,11 @@ main {
   background-color: rgba(200, 200, 200, 0.3);
 }
 
-.year-control {
+.year-bar {
   display: flex;
   align-items: center;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .year-control .year-label {
@@ -68,6 +103,7 @@ main {
 }
 
 input[type="range"] {
+  -webkit-appearance: none;
   appearance: none;
   background-color: #ccc;
   cursor: pointer;

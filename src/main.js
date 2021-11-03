@@ -1,15 +1,24 @@
 import mapboxgl from "mapbox-gl"
 
-import { setMapLayerSource } from "./utils"
+import {
+  formToObj,
+  formToSearchParams,
+  searchParamsToForm,
+  setMapLayerSource,
+} from "./utils"
 
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./css/style.css"
 
+const MAP_LAYERS = ["redlining", "school-closures"]
+
 const mapContainer = document.getElementById("map")
+const form = document.getElementById("controls")
+const yearInput = document.getElementById("year")
 
 const map = new mapboxgl.Map({
   container: mapContainer,
-  style: "style.json",
+  style: "style-dark.json",
   center: [-87.6597, 41.83],
   minZoom: 9,
   maxZoom: 15,
@@ -19,8 +28,32 @@ const map = new mapboxgl.Map({
   attributionControl: true, // TODO: replace with custom control
 })
 
-const yearControl = document.getElementById("year")
-yearControl.addEventListener("input", (event) => {
-  const year = event.target.value
-  setMapLayerSource(map, "tract-points", `tracts-${year}`)
+function updateMapYear(year) {
+  setMapLayerSource(map, "tract-points", `tracts-${yearInput.value}`)
+  document.getElementById("year-value").innerText = year
+}
+
+function onMapUpdate() {
+  const formObj = formToObj(form)
+
+  updateMapYear(year.value)
+
+  const layers = formObj.layer.split(",")
+  MAP_LAYERS.forEach((layer) => {
+    map.setLayoutProperty(
+      layer,
+      "visibility",
+      layers.includes(layer) ? "visible" : "none"
+    )
+  })
+  formToSearchParams(form)
+}
+
+map.once("styledata", () => {
+  searchParamsToForm(form)
+  onMapUpdate()
+
+  document.querySelectorAll("#controls input").forEach((el) => {
+    el.addEventListener("input", onMapUpdate)
+  })
 })

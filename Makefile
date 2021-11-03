@@ -1,11 +1,11 @@
 S3_BUCKET = ssw-segregation-map-demo
-YEARS = 1940 1950 1960 1970
+YEARS = 1940 1950 1960 1970 1980 1990 2000 2010 2020
 
 all: $(foreach year, $(YEARS), data/tiles/tracts-$(year)) data/tiles/redlining
 
 .PHONY:
 clean:
-	rm -rf data/points/*.geojson data/tiles/*.mbtiles
+	rm -rf data/points/*.geojson data/tiles/tracts* data/tiles/redlining*
 
 .PHONY:
 deploy: deploy-tiles
@@ -28,6 +28,7 @@ data/tiles/%: data/tiles/%.mbtiles
 data/tiles/%.mbtiles: data/points/%.geojson
 	tippecanoe \
 		-B13 \
+		-r1.5 \
 		--minimum-zoom=8 \
 		--maximum-zoom=15 \
 		--no-tile-stats \
@@ -47,6 +48,66 @@ data/tiles/redlining.mbtiles: data/layers/redlining.geojson
 		--coalesce-smallest-as-needed \
 		--force \
 		-L redlining:$< -o $@
+
+data/points/tracts-2020.geojson: data/census/tracts_2020.geojson data/census/chicago.geojson
+	mapshaper -i $< \
+		-proj init=albersusa crs=wgs84 \
+		-clip $(filter-out $<,$^) \
+		-filter-slivers \
+		-rename-fields hisp=hispanic \
+		-each 'asian = this.properties["asian"] + this.properties["pac-islander"]' \
+		-dots fields=white,black,hisp,asian,amind,other,multi per-dot=50 colors=red,blue,purple,orange,green,yellow,brown \
+		-each 'race = {red:"white",blue:"black",purple:"hisp",orange:"asian",green:"amind",yellow:"other",brown:"multi"}[fill]' \
+		-filter-fields race \
+		-o $@
+
+data/points/tracts-2010.geojson: data/census/tracts_2010.geojson data/census/chicago.geojson
+	mapshaper -i $< \
+		-proj init=albersusa crs=wgs84 \
+		-clip $(filter-out $<,$^) \
+		-filter-slivers \
+		-rename-fields hisp=hispanic \
+		-each 'asian = this.properties["asian"] + this.properties["pac-islander"]' \
+		-dots fields=white,black,hisp,asian,amind,other,multi per-dot=50 colors=red,blue,purple,orange,green,yellow,brown \
+		-each 'race = {red:"white",blue:"black",purple:"hisp",orange:"asian",green:"amind",yellow:"other",brown:"multi"}[fill]' \
+		-filter-fields race \
+		-o $@
+
+data/points/tracts-2000.geojson: data/census/tracts_2000.geojson data/census/chicago.geojson
+	mapshaper -i $< \
+		-proj init=albersusa crs=wgs84 \
+		-clip $(filter-out $<,$^) \
+		-filter-slivers \
+		-each 'hisp = this.properties["hisp-amind"] + this.properties["hisp-asian"] + this.properties["hisp-black"] + this.properties["hisp-other"] + this.properties["hisp-pac-islander"] + this.properties["hisp-white"]' \
+		-each 'multi = this.properties["hisp-multi"] + this.properties["not-hisp-multi"]' \
+		-each 'asian = this.properties["asian"] + this.properties["pac-islander"]' \
+		-dots fields=white,black,hisp,asian,amind,not-hisp-other,multi per-dot=50 colors=red,blue,purple,orange,green,yellow,brown \
+		-each 'race = {red:"white",blue:"black",purple:"hisp",orange:"asian",green:"amind",yellow:"other",brown:"multi"}[fill]' \
+		-filter-fields race \
+		-o $@
+
+data/points/tracts-1990.geojson: data/census/tracts_1990.geojson data/census/chicago.geojson
+	mapshaper -i $< \
+		-proj init=albersusa crs=wgs84 \
+		-clip $(filter-out $<,$^) \
+		-filter-slivers \
+		-each 'hisp = this.properties["hisp-amind"] + this.properties["hisp-asian"] + this.properties["hisp-black"] + this.properties["hisp-other"] + this.properties["hisp-white"]' \
+		-dots fields=white,black,hisp,asian,amind,not-hisp-other per-dot=50 colors=red,blue,purple,orange,green,yellow \
+		-each 'race = {red:"white",blue:"black",purple:"hisp",orange:"asian",green:"amind",yellow:"other"}[fill]' \
+		-filter-fields race \
+		-o $@
+
+data/points/tracts-1980.geojson: data/census/tracts_1980.geojson data/census/chicago.geojson
+	mapshaper -i $< \
+		-proj init=albersusa crs=wgs84 \
+		-clip $(filter-out $<,$^) \
+		-filter-slivers \
+		-each 'asian = this.properties["asian-chinese"] + this.properties["asian-filipinio"] + this.properties["asian-guam"] + this.properties["asian-hawaiian"] + this.properties["asian-japanese"] + this.properties["asian-samoan"] + this.properties["asian-vietnamese"]' \
+		-each 'amind = this.properties["amind-1"] + this.properties["amind-2"] + this.properties["amind-3"]' \
+		-dots fields=white,black,asian,amind,nonwhite-other per-dot=50 colors=red,blue,orange,green,yellow \
+		-each 'race = {red:"white",blue:"black",orange:"asian",green:"amind",yellow:"other"}[fill]' \
+		-filter-fields race \
+		-o $@
 
 data/points/tracts-1970.geojson: data/census/tracts_1970.geojson data/census/chicago.geojson
 	mapshaper -i $< \
@@ -78,21 +139,27 @@ data/points/tracts-1950.geojson: data/census/tracts_1950.geojson data/census/chi
 		-filter-fields race \
 		-o $@
 
+# TODO: 1940 seems more dense for some reason?
+# TODO: Make note of nonwhite black usage
 data/points/tracts-1940.geojson: data/census/tracts_1940.geojson data/census/chicago.geojson
 	mapshaper -i $< \
 		-proj init=albersusa crs=wgs84 \
 		-clip $(filter-out $<,$^) \
 		-filter-slivers \
 		-dots fields=white,nonwhite per-dot=50 colors=red,blue \
-		-each 'race = {red:"white",blue:"nonwhite"}[fill]' \
+		-each 'race = {red:"white",blue:"nonwhite-black"}[fill]' \
 		-filter-fields race \
 		-o $@
+
+
+# TODO: WBEZ HMDA data https://data.world/wbezchicago/chicago-purchase-originations-2012-2018
 
 data/layers/redlining.geojson: data/layers/usa-redlining.geojson data/census/chicago.geojson
 	mapshaper -i $< \
 		-clip $(filter-out $<,$^) \
 		-filter-slivers \
 		-filter-fields holc_grade \
+		-dissolve2 fields=holc_grade \
 		-o $@
 
 data/layers/usa-redlining.geojson:
