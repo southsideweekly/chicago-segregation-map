@@ -22,7 +22,33 @@
     <main>
       <div id="map"></div>
       <form id="controls" action="#" method="GET">
-        <div class="layers-control">
+        <div id="legend">
+          <div class="legend-race">
+            <p class="race" data-min-year="1990" data-max-year="2030">
+              <span class="legend-color asian"></span>
+              <span>Asian</span>
+            </p>
+            <p class="race hidden" data-min-year="1950" data-max-year="2030">
+              <span class="legend-color black"></span>
+              <span>Black</span>
+            </p>
+            <p class="race" data-min-year="1990" data-max-year="2030">
+              <span class="legend-color hispanic"></span>
+              <span>Hispanic/Latinx</span>
+            </p>
+            <p class="race" data-min-year="1940" data-max-year="2030">
+              <span class="legend-color white"></span>
+              <span>White</span>
+            </p>
+            <p class="race hidden" data-min-year="1940" data-max-year="1940">
+              <span class="legend-color nonwhite-black"></span>
+              <span>Non-white other</span>
+            </p>
+            <p class="race" data-min-year="1950" data-max-year="2030">
+              <span class="legend-color other"></span>
+              <span>Other</span>
+            </p>
+          </div>
           <fieldset>
             <legend class="visually-hidden">Layers</legend>
             <div class="layer-options">
@@ -32,6 +58,7 @@
               </label>
               <label>
                 <input name="layer" type="checkbox" value="school-closures" />
+                <span class="legend-color school-closures"></span>
                 <span>School Closures</span>
               </label>
             </div>

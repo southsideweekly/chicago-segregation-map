@@ -50,6 +50,10 @@ main {
   width: 1px;
 }
 
+.hidden {
+  display: none;
+}
+
 #map {
   position: absolute;
   top: 0;
@@ -58,13 +62,57 @@ main {
   bottom: 0;
 }
 
-.layers-control {
+#legend {
   position: absolute;
   left: 16px;
   top: 16px;
   min-width: 200px;
   padding: 8px;
-  background-color: rgba(200, 200, 200, 0.3);
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+.layer-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.legend-race .race {
+  margin-bottom: 4px;
+}
+
+.legend-color {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-radius: 50%;
+  opacity: 0.8;
+  margin-right: 4px;
+}
+
+.legend-color.white {
+  background-color: #d62728;
+}
+
+.legend-color.black,
+.legend-color.nonwhite-black {
+  background-color: #1f77b4;
+}
+
+.legend-color.hispanic {
+  background-color: #2ca02c;
+}
+
+.legend-color.asian {
+  background-color: #e377c2;
+}
+
+.legend-color.other {
+  background-color: #9467bd;
+}
+
+.legend-color.school-closures {
+  background-color: yellow;
 }
 
 .year-control {
@@ -80,7 +128,7 @@ main {
   max-width: 600px;
   margin: auto;
   padding: 8px;
-  background-color: rgba(200, 200, 200, 0.3);
+  background-color: rgba(200, 200, 200, 0.8);
 }
 
 .year-bar {

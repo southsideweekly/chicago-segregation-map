@@ -31,6 +31,13 @@ const map = new mapboxgl.Map({
 function updateMapYear(year) {
   setMapLayerSource(map, "tract-points", `tracts-${yearInput.value}`)
   document.getElementById("year-value").innerText = year
+
+  document.querySelectorAll(".legend-race .race").forEach((el) => {
+    el.classList.toggle(
+      "hidden",
+      !(+year >= +el.dataset.minYear && +year <= +el.dataset.maxYear)
+    )
+  })
 }
 
 function onMapUpdate() {
