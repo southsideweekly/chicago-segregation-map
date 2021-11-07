@@ -1,4 +1,5 @@
 import mapboxgl from "mapbox-gl"
+import Sidechain from "@nprapps/sidechain"
 
 import {
   formToObj,
@@ -63,4 +64,6 @@ map.once("styledata", () => {
   document.querySelectorAll("#controls input").forEach((el) => {
     el.addEventListener("input", onMapUpdate)
   })
+
+  Sidechain.registerGuest()
 })
