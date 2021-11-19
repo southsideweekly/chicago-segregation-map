@@ -9,7 +9,7 @@ clean:
 
 .PHONY:
 deploy: deploy-tiles
-	aws s3 sync ./dist s3://$(S3_BUCKET) --size-only --acl=public-read --cache-control "public, max-age=0, must-revalidate"
+	aws s3 sync ./dist s3://$(S3_BUCKET) --acl=public-read --cache-control "public, max-age=0, must-revalidate"
 
 .PHONY:
 deploy-tiles:
@@ -103,7 +103,7 @@ data/points/tracts-1980.geojson: data/census/tracts_1980.geojson data/census/chi
 		-proj init=albersusa crs=wgs84 \
 		-clip $(filter-out $<,$^) \
 		-filter-slivers \
-		-each 'asian = this.properties["asian-chinese"] + this.properties["asian-filipinio"] + this.properties["asian-guam"] + this.properties["asian-hawaiian"] + this.properties["asian-japanese"] + this.properties["asian-samoan"] + this.properties["asian-vietnamese"]' \
+		-each 'asian = this.properties["asian-chinese"] + this.properties["asian-filipino"] + this.properties["asian-guam"] + this.properties["asian-hawaiian"] + this.properties["asian-japanese"] + this.properties["asian-korean"] + this.properties["asian-samoan"] + this.properties["asian-vietnamese"]' \
 		-each 'amind = this.properties["amind-1"] + this.properties["amind-2"] + this.properties["amind-3"]' \
 		-dots fields=white,black,asian,amind,nonwhite-other per-dot=50 colors=red,blue,orange,green,yellow \
 		-each 'race = {red:"white",blue:"black",orange:"asian",green:"amind",yellow:"other"}[fill]' \
