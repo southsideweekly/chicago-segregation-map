@@ -100,8 +100,7 @@ main {
   background-color: #d62728;
 }
 
-.legend-color.black,
-.legend-color.nonwhite-black {
+.legend-color.black {
   background-color: #1f77b4;
 }
 

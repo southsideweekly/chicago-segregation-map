@@ -141,15 +141,14 @@ data/points/tracts-1950.geojson: data/census/tracts_1950.geojson data/layers/chi
 		-filter-fields race \
 		-o $@
 
-# TODO: 1940 seems more dense for some reason?
-# TODO: Make note of nonwhite black usage
 data/points/tracts-1940.geojson: data/census/tracts_1940.geojson data/layers/chicago.geojson
 	mapshaper -i $< \
 		-proj init=albersusa crs=wgs84 \
 		-clip $(filter-out $<,$^) \
 		-filter-slivers \
-		-dots fields=white,nonwhite per-dot=50 colors=red,blue \
-		-each 'race = {red:"white",blue:"nonwhite-black"}[fill]' \
+		-each 'other = nonwhite - black' \
+		-dots fields=white,black,other per-dot=50 colors=red,blue,yellow \
+		-each 'race = {red:"white",blue:"black",yellow:"other"}[fill]' \
 		-filter-fields race \
 		-o $@
 
@@ -168,8 +167,6 @@ data/layers/school-closures.geojson:
 	wget -O - https://s3.amazonaws.com/projects.chicagoreporter.com/graphics/newschoolmap/geo_schools.geojson | \
 	cut -c 10- | rev | cut -c 2- | rev | \
 	mapshaper -i - -filter-fields name,address -o $@
-
-# TODO: WBEZ HMDA data https://data.world/wbezchicago/chicago-purchase-originations-2012-2018
 
 data/layers/redlining.geojson: data/layers/usa-redlining.geojson data/layers/chicago.geojson
 	mapshaper -i $< \
