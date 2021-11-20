@@ -51,7 +51,7 @@ main {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #map {
@@ -125,6 +125,14 @@ main {
   border-radius: 0;
   background-color: rgba(217, 131, 141, 0.4);
   border: solid 1px rgba(217, 131, 141, 1);
+}
+
+.legend-color.highways {
+  width: 4px;
+  background-color: yellow;
+  border-radius: 0;
+  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .year-control {

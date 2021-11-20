@@ -11,7 +11,11 @@ import {
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./css/style.css"
 
-const MAP_LAYERS = ["redlining", "school-closures"]
+const MAP_LAYERS = ["redlining", "highways", "school-closures"]
+const MAP_LAYERS_MIN_YEARS = {
+  highways: 1950,
+  "school-closures": 2010,
+}
 
 const mapContainer = document.getElementById("map")
 const form = document.getElementById("controls")
@@ -26,8 +30,12 @@ const map = new mapboxgl.Map({
   zoom: 9.25,
   hash: true,
   dragRotate: false,
-  attributionControl: true, // TODO: replace with custom control
+  attributionControl: true, // TODO: replace with custom control?
 })
+
+const shouldShowMapLayer = (layers, layer, year) =>
+  layers.includes(layer) &&
+  (!MAP_LAYERS_MIN_YEARS[layer] || year >= MAP_LAYERS_MIN_YEARS[layer])
 
 function updateMapYear(year) {
   setMapLayerSource(map, "tract-points", `tracts-${yearInput.value}`)
@@ -37,6 +45,12 @@ function updateMapYear(year) {
     el.classList.toggle(
       "hidden",
       !(+year >= +el.dataset.minYear && +year <= +el.dataset.maxYear)
+    )
+  })
+  document.querySelectorAll(".layer-options label").forEach((el) => {
+    el.classList.toggle(
+      "hidden",
+      !!el.dataset.minYear && +year < +el.dataset.minYear
     )
   })
 }
@@ -51,7 +65,7 @@ function onMapUpdate() {
     map.setLayoutProperty(
       layer,
       "visibility",
-      layers.includes(layer) ? "visible" : "none"
+      shouldShowMapLayer(layers, layer, +year.value) ? "visible" : "none"
     )
   })
   formToSearchParams(form)

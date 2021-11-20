@@ -28,6 +28,10 @@
               <span class="legend-color asian"></span>
               <span>Asian</span>
             </p>
+            <p class="race hidden" data-min-year="1930" data-max-year="1930">
+              <span class="legend-color black"></span>
+              <span>Black</span>
+            </p>
             <p class="race hidden" data-min-year="1950" data-max-year="2030">
               <span class="legend-color black"></span>
               <span>Black</span>
@@ -36,13 +40,17 @@
               <span class="legend-color hispanic"></span>
               <span>Hispanic/Latinx</span>
             </p>
-            <p class="race" data-min-year="1940" data-max-year="2030">
+            <p class="race" data-min-year="1930" data-max-year="2030">
               <span class="legend-color white"></span>
               <span>White</span>
             </p>
             <p class="race hidden" data-min-year="1940" data-max-year="1940">
               <span class="legend-color nonwhite-black"></span>
               <span>Non-white other</span>
+            </p>
+            <p class="race" data-min-year="1930" data-max-year="1930">
+              <span class="legend-color other"></span>
+              <span>Other</span>
             </p>
             <p class="race" data-min-year="1950" data-max-year="2030">
               <span class="legend-color other"></span>
@@ -57,7 +65,12 @@
                 <span class="legend-color redlining"></span>
                 <span>Redlining</span>
               </label>
-              <label>
+              <label data-min-year="1950">
+                <input name="layer" type="checkbox" value="highways" />
+                <span class="legend-color highways"></span>
+                <span>Highways</span>
+              </label>
+              <label data-min-year="2010">
                 <input name="layer" type="checkbox" value="school-closures" />
                 <span class="legend-color school-closures"></span>
                 <span>School Closures</span>
@@ -71,12 +84,12 @@
             <span id="year-value"></span>
           </div>
           <div class="year-bar">
-            <span class="year-label">1940</span>
+            <span class="year-label">1930</span>
             <input
               id="year"
               name="year"
               type="range"
-              min="1940"
+              min="1930"
               max="2020"
               step="10"
               value="2020"

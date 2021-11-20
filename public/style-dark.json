@@ -40,6 +40,21 @@
       "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/school-closures.geojson",
       "attribution": "The Chicago Reporter"
     },
+    "highways": {
+      "type": "geojson",
+      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/highways-chicago.geojson",
+      "attribution": "United States. Bureau of Transportation Statistics"
+    },
+    "tracts-1930": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1930/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
+    },
     "tracts-1940": {
       "type": "vector",
       "tiles": [
@@ -846,9 +861,19 @@
       }
     },
     {
+      "id": "highways",
+      "type": "line",
+      "source": "highways",
+      "paint": {
+        "line-opacity": 0.8,
+        "line-color": "yellow",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 15, 12]
+      }
+    },
+    {
       "id": "tract-points",
       "type": "circle",
-      "source": "tracts-1940",
+      "source": "tracts-2020",
       "source-layer": "tracts",
       "paint": {
         "circle-opacity": 0.8,
