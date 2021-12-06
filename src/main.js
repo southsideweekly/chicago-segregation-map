@@ -20,6 +20,7 @@ const MAP_LAYERS_MIN_YEARS = {
 const mapContainer = document.getElementById("map")
 const form = document.getElementById("controls")
 const yearInput = document.getElementById("year")
+const redliningCategories = document.getElementById("redlining-categories")
 
 const map = new mapboxgl.Map({
   container: mapContainer,
@@ -61,6 +62,12 @@ function onMapUpdate() {
   updateMapYear(year.value)
 
   const layers = formObj.layer.split(",")
+
+  redliningCategories.classList.toggle(
+    "hidden",
+    !shouldShowMapLayer(layers, "redlining", +year.value)
+  )
+
   MAP_LAYERS.forEach((layer) => {
     map.setLayoutProperty(
       layer,
