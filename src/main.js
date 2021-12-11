@@ -11,8 +11,11 @@ import {
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./css/style.css"
 
-const MAP_LAYERS = ["redlining", "highways", "school-closures"]
+// TODO: Tooltip for points
+
+const MAP_LAYERS = ["redlining", "cha", "highways", "school-closures"]
 const MAP_LAYERS_MIN_YEARS = {
+  cha: 1930,
   highways: 1950,
   "school-closures": 2010,
 }
@@ -24,14 +27,14 @@ const redliningCategories = document.getElementById("redlining-categories")
 
 const map = new mapboxgl.Map({
   container: mapContainer,
-  style: "style-dark.json",
+  style: "style-light.json",
   center: [-87.6597, 41.83],
   minZoom: 9,
   maxZoom: 15,
   zoom: 9.25,
   hash: true,
   dragRotate: false,
-  attributionControl: true, // TODO: replace with custom control?
+  attributionControl: true,
 })
 
 const shouldShowMapLayer = (layers, layer, year) =>
@@ -41,6 +44,8 @@ const shouldShowMapLayer = (layers, layer, year) =>
 function updateMapYear(year) {
   setMapLayerSource(map, "tract-points", `tracts-${yearInput.value}`)
   document.getElementById("year-value").innerText = year
+
+  map.setFilter("cha", ["<", ["get", "constructed"], ["+", 10, +year]])
 
   document.querySelectorAll(".legend-race .race").forEach((el) => {
     el.classList.toggle(

@@ -87,6 +87,11 @@ main {
   margin-bottom: 4px;
 }
 
+.dot-legend {
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
 .legend-color {
   height: 16px;
   width: 16px;
@@ -114,6 +119,10 @@ main {
 
 .legend-color.other {
   background-color: #9467bd;
+}
+
+.legend-color.cha {
+  background-color: #fe7f0e;
 }
 
 .legend-color.school-closures {

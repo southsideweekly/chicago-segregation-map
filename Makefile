@@ -15,6 +15,7 @@ deploy: deploy-tiles
 deploy-tiles:
 	aws s3 cp data/layers/school-closures.geojson s3://$(S3_BUCKET)/layers/school-closures.geojson --acl=public-read --cache-control "public, max-age=86400"
 	aws s3 cp data/layers/highways-chicago.geojson s3://$(S3_BUCKET)/layers/highways-chicago.geojson --acl=public-read --cache-control "public, max-age=86400"
+	aws s3 cp data/layers/cha.geojson s3://$(S3_BUCKET)/layers/cha.geojson --acl=public-read --cache-control "public, max-age=86400"
 	aws s3 sync data/tiles/ s3://$(S3_BUCKET)/tiles/ --size-only --acl=public-read --content-encoding=gzip --cache-control "public, max-age=86400"
 
 .PHONY:
@@ -161,6 +162,12 @@ data/points/tracts-1930.geojson: data/census/tracts_1930.geojson data/layers/chi
 		-dots fields=white,black,other per-dot=50 colors=red,blue,yellow \
 		-each 'race = {red:"white",blue:"black",yellow:"other"}[fill]' \
 		-filter-fields race \
+		-o $@
+
+data/layers/cha.geojson: data/layers/cha.csv
+	mapshaper -i $< \
+		-points \
+		-each 'constructed = +constructed' \
 		-o $@
 
 data/layers/school-closures.geojson:

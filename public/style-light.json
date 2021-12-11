@@ -35,6 +35,31 @@
       "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
       "attribution": "<a href=\"https://dsl.richmond.edu/panorama/redlining/\" target=\"_blank\" rel=\"noopener noreferrer\">Mapping Inequality, American Panorama </a>"
     },
+    "school-closures": {
+      "type": "geojson",
+      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/school-closures.geojson",
+      "attribution": "The Chicago Reporter"
+    },
+    "cha": {
+      "type": "geojson",
+      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/cha.geojson",
+      "attribution": "Chicago Housing Authority"
+    },
+    "highways": {
+      "type": "geojson",
+      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/highways-chicago.geojson",
+      "attribution": "United States. Bureau of Transportation Statistics"
+    },
+    "tracts-1930": {
+      "type": "vector",
+      "tiles": [
+        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1930/{z}/{x}/{y}.pbf"
+      ],
+      "minzoom": 8,
+      "maxzoom": 15,
+      "bounds": [-87.940101, 41.643919, -87.523984, 42.023022],
+      "attribution": "<a href=\"https://www.nhgis.org\" target=\"_blank\" rel=\"noopener noreferrer\">IPUMS NHGIS, University of Minnesota</a>"
+    },
     "tracts-1940": {
       "type": "vector",
       "tiles": [
@@ -889,7 +914,7 @@
       "source": "redlining",
       "source-layer": "redlining",
       "paint": {
-        "fill-opacity": 0.2,
+        "fill-opacity": 0.3,
         "fill-color": [
           "match",
           ["get", "holc_grade"],
@@ -916,6 +941,16 @@
           "#d9838d",
           "#ccc"
         ]
+      }
+    },
+    {
+      "id": "highways",
+      "type": "line",
+      "source": "highways",
+      "paint": {
+        "line-opacity": 0.8,
+        "line-color": "yellow",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 9, 2, 15, 12]
       }
     },
     {
@@ -949,6 +984,27 @@
           "#9467bd",
           "#9467bd"
         ]
+      }
+    },
+    {
+      "id": "school-closures",
+      "type": "circle",
+      "source": "school-closures",
+      "paint": {
+        "circle-opacity": 0.8,
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 9, 3, 15, 18],
+        "circle-color": "yellow"
+      }
+    },
+    {
+      "id": "cha",
+      "type": "circle",
+      "source": "cha",
+      "filter": ["<", ["get", "constructed"], ["+", 10, 2020]],
+      "paint": {
+        "circle-opacity": 0.8,
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 9, 3, 15, 18],
+        "circle-color": "#fe7f0e"
       }
     },
     {
