@@ -250,3 +250,24 @@ input[type="range"]::-ms-slider-thumb {
     width: calc(100% - 64px);
   }
 }
+
+.mapboxgl-popup-content {
+  min-width: 250px;
+}
+
+.popup .title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.popup .label {
+  font-weight: bold;
+  margin-right: 6px;
+  display: inline-block;
+  width: 30%;
+}
+
+.popup p + .title {
+  margin-top: 12px;
+}

@@ -11,9 +11,8 @@ import {
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./css/style.css"
 
-// TODO: Tooltip for points
-
 const MAP_LAYERS = ["redlining", "cha", "highways", "school-closures"]
+const TOOLTIP_LAYERS = ["cha", "school-closures"]
 const MAP_LAYERS_MIN_YEARS = {
   cha: 1930,
   highways: 1950,
@@ -36,6 +35,8 @@ const map = new mapboxgl.Map({
   dragRotate: false,
   attributionControl: true,
 })
+
+const isMobile = () => window.innerWidth <= 600
 
 const shouldShowMapLayer = (layers, layer, year) =>
   layers.includes(layer) &&
@@ -82,6 +83,84 @@ function onMapUpdate() {
   })
   formToSearchParams(form)
 }
+
+const hoverPopup = new mapboxgl.Popup({
+  closeButton: false,
+  closeOnClick: false,
+})
+
+const clickPopup = new mapboxgl.Popup({
+  closeButton: true,
+  closeOnClick: true,
+})
+
+// TODO: Wentworth gardens, stateway gardens
+
+const popupContent = (features) =>
+  features
+    .map(({ layer: { id: layerId }, properties: { name, ...properties } }) =>
+      layerId === "cha"
+        ? `
+        <p class="title">${name}</p>
+        <p><span class="label">Built</span> ${properties.built}</p>
+        <p><span class="label">Demolished</span> ${properties.demolished}</p>
+        <p><span class="label">Units</span> ${properties.units}</p>
+        ${
+          (properties.notes || "").trim() &&
+          `<p class="label">Notes</p><p>${properties.notes}</p>`
+        }`
+        : `
+        <p class="title">${name}</p>
+        <p><span class="label">Address</span> ${properties.address}</p>
+        `
+    )
+    .join("")
+
+const removePopup = (popup) => {
+  map.getCanvas().style.cursor = ""
+  popup.remove()
+}
+
+const onMouseEnter = (e) => {
+  const features = map.queryRenderedFeatures(e.point, {
+    layers: TOOLTIP_LAYERS,
+  })
+  if (features.length > 0 && !clickPopup.isOpen()) {
+    map.getCanvas().style.cursor = "pointer"
+    if (!isMobile()) {
+      hoverPopup
+        .setLngLat(e.lngLat)
+        .setHTML(`<div class="popup hover">${popupContent(features)}</div>`)
+        .addTo(map)
+    }
+  } else {
+    removePopup(hoverPopup)
+  }
+}
+
+const onMouseLeave = () => {
+  removePopup(hoverPopup)
+}
+
+const onMapClick = (e) => {
+  const features = map.queryRenderedFeatures(e.point, {
+    layers: TOOLTIP_LAYERS,
+  })
+  if (features.length > 0) {
+    map.getCanvas().style.cursor = "pointer"
+    removePopup(hoverPopup)
+    clickPopup
+      .setLngLat(e.lngLat)
+      .setHTML(`<div class="popup click">${popupContent(features)}</div>`)
+      .addTo(map)
+  }
+}
+
+TOOLTIP_LAYERS.forEach((layer) => {
+  map.on("mouseenter", layer, onMouseEnter)
+  map.on("mouseleave", layer, onMouseLeave)
+  map.on("click", layer, onMapClick)
+})
 
 map.once("styledata", () => {
   searchParamsToForm(form)
