@@ -42,9 +42,17 @@ const shouldShowMapLayer = (layers, layer, year) =>
   layers.includes(layer) &&
   (!MAP_LAYERS_MIN_YEARS[layer] || year >= MAP_LAYERS_MIN_YEARS[layer])
 
+const getYearProgress = (year) => ((+year - 1930) / (2020 - 1930)) * 100
+
 function updateMapYear(year) {
   setMapLayerSource(map, "tract-points", `tracts-${yearInput.value}`)
   document.getElementById("year-value").innerText = year
+  const yearProgressPercent = `${getYearProgress(yearInput.value)}%`
+  document.getElementById("year-marker").style.left = yearProgressPercent
+  document.getElementById("year-progress").style.width = yearProgressPercent
+  document.querySelectorAll("span[data-tick]").forEach((el) => {
+    el.classList.toggle("active", +el.dataset.tick <= yearInput.value)
+  })
 
   map.setFilter("cha", ["<", ["get", "constructed"], ["+", 10, +year]])
 

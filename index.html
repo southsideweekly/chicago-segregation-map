@@ -49,11 +49,34 @@
           <fieldset>
             <legend class="visually-hidden">Layers</legend>
             <div class="layer-options">
-              <label>
-                <input name="layer" type="checkbox" value="redlining" />
-                <span class="legend-color redlining"></span>
-                <span>Redlining</span>
-              </label>
+              <div class="layer-row">
+                <label class="switch">
+                  <input name="layer" type="checkbox" value="redlining" />
+                  <span class="switch-toggle"></span>
+                  <span>Redlining</span>
+                </label>
+                <div class="tooltip" tabindex="0">
+                  <svg viewBox="0 0 29.536 29.536">
+                    <g>
+                      <path
+                        d="M14.768,0C6.611,0,0,6.609,0,14.768c0,8.155,6.611,14.767,14.768,14.767s14.768-6.612,14.768-14.767
+                    C29.535,6.609,22.924,0,14.768,0z M14.768,27.126c-6.828,0-12.361-5.532-12.361-12.359c0-6.828,5.533-12.362,12.361-12.362
+                    c6.826,0,12.359,5.535,12.359,12.362C27.127,21.594,21.594,27.126,14.768,27.126z"
+                      />
+                      <path
+                        d="M14.385,19.337c-1.338,0-2.289,0.951-2.289,2.34c0,1.336,0.926,2.339,2.289,2.339c1.414,0,2.314-1.003,2.314-2.339
+                    C16.672,20.288,15.771,19.337,14.385,19.337z"
+                      />
+                      <path
+                        d="M14.742,6.092c-1.824,0-3.34,0.513-4.293,1.053l0.875,2.804c0.668-0.462,1.697-0.772,2.545-0.772
+                    c1.285,0.027,1.879,0.644,1.879,1.543c0,0.85-0.67,1.697-1.494,2.701c-1.156,1.364-1.594,2.701-1.516,4.012l0.025,0.669h3.42
+                    v-0.463c-0.025-1.158,0.387-2.162,1.311-3.215c0.979-1.08,2.211-2.366,2.211-4.321C19.705,7.968,18.139,6.092,14.742,6.092z"
+                      />
+                    </g>
+                  </svg>
+                  <span class="tooltip-content">Testing</span>
+                </div>
+              </div>
               <div id="redlining-categories" class="redlining-categories">
                 <p>
                   <span class="legend-color redlining a"></span>
@@ -72,19 +95,22 @@
                   <span>"D" grade</span>
                 </p>
               </div>
-              <label data-min-year="1930">
-                <input name="layer" type="checkbox" value="cha" />
+              <label class="switch" data-min-year="1930">
                 <span class="legend-color cha"></span>
+                <input name="layer" type="checkbox" value="cha" />
+                <span class="switch-toggle"></span>
                 <span>CHA Developments</span>
               </label>
-              <label data-min-year="1950">
-                <input name="layer" type="checkbox" value="highways" />
+              <label class="switch" data-min-year="1950">
                 <span class="legend-color highways"></span>
+                <input name="layer" type="checkbox" value="highways" />
+                <span class="switch-toggle"></span>
                 <span>Highways</span>
               </label>
-              <label data-min-year="2010">
-                <input name="layer" type="checkbox" value="school-closures" />
+              <label class="switch" data-min-year="2010">
                 <span class="legend-color school-closures"></span>
+                <input name="layer" type="checkbox" value="school-closures" />
+                <span class="switch-toggle"></span>
                 <span>School Closures</span>
               </label>
             </div>
@@ -95,18 +121,31 @@
             <label for="year">Year</label>
             <span id="year-value"></span>
           </div>
-          <div class="year-bar">
-            <span class="year-label">1930</span>
-            <input
-              id="year"
-              name="year"
-              type="range"
-              min="1930"
-              max="2020"
-              step="10"
-              value="2020"
-            />
-            <span class="year-label">2020</span>
+          <div class="year-bar-group">
+            <div class="year-bar">
+              <input
+                id="year"
+                name="year"
+                type="range"
+                min="1930"
+                max="2020"
+                step="10"
+                value="2020"
+              />
+              <div class="year-background"></div>
+              <div id="year-progress"></div>
+              <span data-tick="1930"></span>
+              <span data-tick="1940"></span>
+              <span data-tick="1950"></span>
+              <span data-tick="1960"></span>
+              <span data-tick="1970"></span>
+              <span data-tick="1980"></span>
+              <span data-tick="1990"></span>
+              <span data-tick="2000"></span>
+              <span data-tick="2010"></span>
+              <span data-tick="2020"></span>
+              <div id="year-marker"></div>
+            </div>
           </div>
         </div>
       </form>
