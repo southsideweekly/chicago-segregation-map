@@ -22,12 +22,17 @@ html {
   height: -webkit-fill-available;
 }
 
+/* TODO: Replace 100vh with desired min height */
 body,
 main {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   margin: 0;
   padding: 0;
+}
+
+main {
+  height: 100%;
 }
 
 .visually-hidden {
@@ -54,6 +59,20 @@ main {
   display: none !important;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+#map-container {
+  position: relative;
+  width: auto;
+  height: 100vh;
+  flex-grow: 1;
+}
+
 #map {
   position: absolute;
   top: 0;
@@ -63,12 +82,22 @@ main {
 }
 
 #legend {
-  position: absolute;
-  left: 16px;
-  top: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 500px;
   min-width: 200px;
-  padding: 8px;
-  background-color: rgba(200, 200, 200, 0.8);
+  padding: 16px;
+  background-color: #393939;
+  color: #fff;
+}
+
+#controls {
+  flex-grow: 1;
+}
+
+#legend h2 {
+  margin-bottom: 0.5rem;
 }
 
 .layer-options {
@@ -93,18 +122,15 @@ main {
   margin-bottom: 4px;
 }
 
-.dot-legend {
-  font-style: italic;
-  margin-bottom: 6px;
-}
-
 .legend-color {
   height: 16px;
   width: 16px;
   display: inline-block;
+  vertical-align: middle;
   border-radius: 50%;
   opacity: 0.8;
   margin-right: 4px;
+  background-color: #fff;
 }
 
 .legend-color.white {
@@ -168,19 +194,27 @@ main {
   margin-right: 10px;
 }
 
+.controls-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+#year-value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
 .year-control {
-  position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: calc(100% - 32px);
-  max-width: 600px;
-  margin: auto;
-  padding: 8px;
+  width: 100%;
+  padding: 0.75rem 0;
+  margin-bottom: 1.25rem;
+  border-bottom: solid 1px #fff;
 }
 
 .year-bar-group {
@@ -189,14 +223,17 @@ main {
   flex-grow: 1;
   width: 100%;
   position: relative;
+  flex-wrap: wrap;
 }
 
 .year-bar {
+  position: relative;
   display: flex;
   align-items: center;
   flex-grow: 1;
   width: 100%;
   height: 1rem;
+  margin: 0 0.75rem;
 }
 
 .year-control .year-label {
@@ -331,7 +368,43 @@ span[data-tick]:nth-of-type(10) {
   box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Need to split these out, or not applied, unclear why */
+.year-labels {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 0.75rem;
+  margin-top: 0.75rem;
+  height: 1rem;
+}
+
+.year-labels > span {
+  position: absolute;
+}
+.year-labels > span:nth-child(1) {
+  left: -0.75rem;
+}
+.year-labels > span:nth-child(2) {
+  left: 33.3333%;
+  margin-left: -1.25rem;
+}
+.year-labels > span:nth-child(3) {
+  left: 66.6666%;
+  margin-left: -1.25rem;
+}
+.year-labels > span:nth-child(4) {
+  left: auto;
+  right: -0.75rem;
+}
+
+.legend-race {
+  padding-right: 2rem;
+}
+fieldset {
+  padding-left: 1rem;
+  border-left: solid 1px #fff;
+}
 
 .switch {
   cursor: pointer;
@@ -397,15 +470,6 @@ span[data-tick]:nth-of-type(10) {
   display: block;
 }
 
-@media screen and (min-width: 600px) {
-  .year-control {
-    left: 32px;
-    right: 32px;
-    bottom: 48px;
-    width: calc(100% - 64px);
-  }
-}
-
 .mapboxgl-popup-content {
   min-width: 250px;
 }
@@ -425,4 +489,54 @@ span[data-tick]:nth-of-type(10) {
 
 .popup p + .title {
   margin-top: 12px;
+}
+
+.footnotes {
+  padding-top: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  body,
+  main {
+    min-height: auto;
+  }
+  main {
+    flex-wrap: wrap;
+  }
+  #map-container {
+    height: 600px;
+    width: 100%;
+  }
+  #legend {
+    height: auto;
+    width: 100%;
+  }
+  #controls {
+    flex-grow: 0;
+  }
+  .controls-content {
+    flex-wrap: wrap;
+  }
+  .controls-content > * {
+    width: 100%;
+  }
+  .layer-options {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .layer-options > * {
+    width: 50%;
+  }
+  .legend-race,
+  fieldset {
+    padding: 0;
+  }
+  .legend-race {
+    padding-bottom: 1rem;
+    border-bottom: solid 1px #fff;
+  }
+  fieldset {
+    padding-top: 1.5rem;
+    border-width: 0;
+  }
 }
