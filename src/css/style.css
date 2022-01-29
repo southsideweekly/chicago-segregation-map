@@ -423,7 +423,7 @@ span[data-tick]:nth-of-type(10) {
 .legend-race {
   padding-right: 2rem;
 }
-fieldset {
+.disparities {
   padding-left: 1rem;
   border-left: solid 1px #707070;
 }
@@ -435,11 +435,15 @@ fieldset {
 .switch {
   cursor: pointer;
 }
+.switch:focus,
+.switch:focus-within {
+  outline: 1px dotted #ececec;
+}
 
 .switch input[type="checkbox"] {
   height: 0;
   width: 0;
-  visibility: hidden;
+  opacity: 0;
   margin: 0;
 }
 
@@ -554,14 +558,14 @@ fieldset {
     width: 50%;
   }
   .legend-race,
-  fieldset {
+  .disparities {
     padding: 0;
   }
   .legend-race {
     padding-bottom: 1rem;
     border-bottom: solid 1px #707070;
   }
-  fieldset {
+  .disparities {
     padding-top: 1.5rem;
     border-width: 0;
   }
