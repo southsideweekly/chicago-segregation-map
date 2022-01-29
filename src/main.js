@@ -55,23 +55,25 @@ function updateMapYear(year) {
 
   map.setFilter("cha", ["<", ["get", "constructed"], ["+", 10, +year]])
 
-  document.querySelectorAll(".legend-race .race").forEach((el) => {
-    // el.classList.toggle(
-    //   "hidden",
-    //   !(+year >= +el.dataset.minYear && +year <= +el.dataset.maxYear)
-    // )
-  })
-  document.querySelectorAll(".layer-options label").forEach((el) => {
-    el.classList.toggle(
-      "hidden",
-      !!el.dataset.minYear && +year < +el.dataset.minYear
-    )
-  })
+  document
+    .querySelectorAll(".layer-options label[data-min-year]")
+    .forEach((el) => {
+      el.classList.toggle(
+        "hidden",
+        !!el.dataset.minYear && +year < +el.dataset.minYear
+      )
+    })
+}
+
+function updateMapRace(formObj) {
+  const races = (formObj.race || "").split(",").filter((r) => !!r)
+  map.setFilter("tract-points", ["in", ["get", "race"], ["literal", races]])
 }
 
 function onMapUpdate() {
   const formObj = formToObj(form)
 
+  updateMapRace(formObj)
   updateMapYear(year.value)
 
   const layers = formObj.layer.split(",")
@@ -95,8 +97,6 @@ const clickPopup = new mapboxgl.Popup({
   closeButton: true,
   closeOnClick: true,
 })
-
-// TODO: Wentworth gardens, stateway gardens
 
 const popupContent = (features) =>
   features
@@ -165,6 +165,10 @@ TOOLTIP_LAYERS.forEach((layer) => {
 })
 
 map.once("styledata", () => {
+  const params = new URLSearchParams(window.location.search)
+  if (!params.get("race")) {
+    params.append("race", "asian,black,hisp,white,other")
+  }
   searchParamsToForm(form)
   onMapUpdate()
 

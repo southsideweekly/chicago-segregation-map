@@ -64,30 +64,46 @@
           <div class="controls-content">
             <div class="legend-race">
               <h2>Race</h2>
-              <p class="race" data-min-year="1930" data-max-year="2030">
+              <p class="race race-legend">
                 <span class="legend-color"></span>
                 <span>&thickapprox; 100 people</span>
               </p>
-              <p class="race" data-min-year="1980" data-max-year="2030">
-                <span class="legend-color asian"></span>
-                <span>Asian &#10033;</span>
-              </p>
-              <p class="race" data-min-year="1930" data-max-year="2030">
-                <span class="legend-color black"></span>
-                <span>Black</span>
-              </p>
-              <p class="race" data-min-year="1990" data-max-year="2030">
-                <span class="legend-color hispanic"></span>
-                <span>Hispanic/Latinx &#10033;</span>
-              </p>
-              <p class="race" data-min-year="1930" data-max-year="2030">
-                <span class="legend-color white"></span>
-                <span>White</span>
-              </p>
-              <p class="race" data-min-year="1930" data-max-year="2030">
-                <span class="legend-color other"></span>
-                <span>Other</span>
-              </p>
+              <div class="layer-options">
+                <div class="race-group">
+                  <label class="switch race">
+                    <span class="legend-color asian"></span>
+                    <input name="race" type="checkbox" value="asian" checked />
+                    <span class="switch-toggle"></span>
+                    <span>Asian &#10033;</span>
+                  </label>
+                  <label class="switch race">
+                    <span class="legend-color black"></span>
+                    <input name="race" type="checkbox" value="black" checked />
+                    <span class="switch-toggle"></span>
+                    <span>Black</span>
+                  </label>
+                  <label class="switch race">
+                    <span class="legend-color hispanic"></span>
+                    <input name="race" type="checkbox" value="hisp" checked />
+                    <span class="switch-toggle"></span>
+                    <span>Hispanic/Latinx &#10033;</span>
+                  </label>
+                </div>
+                <div class="race-group">
+                  <label class="switch race">
+                    <span class="legend-color white"></span>
+                    <input name="race" type="checkbox" value="white" checked />
+                    <span class="switch-toggle"></span>
+                    <span>White</span>
+                  </label>
+                  <label class="switch race">
+                    <span class="legend-color other"></span>
+                    <input name="race" type="checkbox" value="other" checked />
+                    <span class="switch-toggle"></span>
+                    <span>Other</span>
+                  </label>
+                </div>
+              </div>
             </div>
             <fieldset>
               <h2>Disparities</h2>
@@ -95,12 +111,12 @@
               <div class="layer-options">
                 <div class="redlining-group">
                   <div class="layer-row">
-                    <label class="switch">
+                    <label class="switch redlining">
                       <input name="layer" type="checkbox" value="redlining" />
                       <span class="switch-toggle"></span>
                       <span>Redlining</span>
                     </label>
-                    <div class="tooltip" tabindex="0">
+                    <!-- <div class="tooltip" tabindex="0">
                       <svg viewBox="0 0 29.536 29.536">
                         <g>
                           <path
@@ -120,7 +136,7 @@
                         </g>
                       </svg>
                       <span class="tooltip-content">Testing</span>
-                    </div>
+                    </div> -->
                   </div>
                   <div id="redlining-categories" class="redlining-categories">
                     <p>
@@ -171,8 +187,8 @@
         </form>
         <div class="footnotes">
           <p>
-            &#10033; The Census did not track Asian population prior to X and
-            Hispanic/Latinx population prior to X
+            &#10033; The Census did not track Asian population prior to 1970 and
+            Hispanic/Latinx population prior to 1990
           </p>
         </div>
       </div>

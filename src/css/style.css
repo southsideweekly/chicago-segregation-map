@@ -118,8 +118,18 @@ main {
   justify-content: flex-start;
 }
 
-.legend-race .race {
-  margin-bottom: 4px;
+.switch.redlining {
+  padding-left: 20px;
+}
+
+.legend-race .race,
+.redlining-group,
+.layer-toggle-group .switch {
+  margin-bottom: 8px;
+}
+
+.legend-race .race-legend {
+  margin-bottom: 16px;
 }
 
 .legend-color {
@@ -154,11 +164,11 @@ main {
 }
 
 .legend-color.cha {
-  background-color: #fe7f0e;
+  background-color: #eefe41;
 }
 
 .legend-color.school-closures {
-  background-color: yellow;
+  background-color: #fb8c00;
 }
 
 .legend-color.redlining {
@@ -168,7 +178,7 @@ main {
 }
 
 .redlining-categories {
-  margin-left: 22px;
+  margin-left: 64px;
   margin-top: 6px;
   margin-bottom: 4px;
 }
@@ -188,7 +198,7 @@ main {
 
 .legend-color.highways {
   width: 4px;
-  background-color: yellow;
+  background-color: #fdd835;
   border-radius: 0;
   margin-left: 6px;
   margin-right: 10px;
@@ -213,8 +223,9 @@ main {
   justify-content: flex-start;
   width: 100%;
   padding: 0.75rem 0;
+  padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
-  border-bottom: solid 1px #fff;
+  border-bottom: solid 1px #707070;
 }
 
 .year-bar-group {
@@ -232,7 +243,7 @@ main {
   align-items: center;
   flex-grow: 1;
   width: 100%;
-  height: 1rem;
+  height: 0.5rem;
   margin: 0 0.75rem;
 }
 
@@ -296,7 +307,7 @@ span[data-tick],
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: black;
+  background-color: #666666;
   border-radius: 1rem;
 }
 
@@ -306,7 +317,7 @@ span[data-tick],
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: red;
+  background-color: #dddddd;
   border-radius: 1rem;
 }
 
@@ -314,14 +325,15 @@ span[data-tick] {
   position: absolute;
   right: auto;
   transform: translateX(-0.75rem);
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
-  background-color: #000;
-  box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: #666666;
 }
 span[data-tick].active {
-  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  background-color: #ececec;
 }
 
 span[data-tick]:nth-of-type(1) {
@@ -360,12 +372,23 @@ span[data-tick]:nth-of-type(10) {
   right: auto;
   left: 0;
   transform: translateX(-1rem);
-  background-color: #000;
+  /* background-color: #393939; */
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
-  border: solid 0.25rem #fff;
+  border: solid 0.25rem #393939;
   box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+#year-marker::after {
+  content: "";
+  position: absolute;
+  right: auto;
+  left: 0;
+  background-color: #393939;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  border: solid 0.25rem #ececec;
 }
 
 .year-labels {
@@ -403,7 +426,11 @@ span[data-tick]:nth-of-type(10) {
 }
 fieldset {
   padding-left: 1rem;
-  border-left: solid 1px #fff;
+  border-left: solid 1px #707070;
+}
+
+.switch.race {
+  display: flex;
 }
 
 .switch {
@@ -533,7 +560,7 @@ fieldset {
   }
   .legend-race {
     padding-bottom: 1rem;
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #707070;
   }
   fieldset {
     padding-top: 1.5rem;
