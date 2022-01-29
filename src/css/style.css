@@ -135,6 +135,7 @@ main {
 .legend-color {
   height: 16px;
   width: 16px;
+  min-width: 16px;
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
@@ -198,6 +199,8 @@ main {
 
 .legend-color.highways {
   width: 4px;
+  min-width: 4px;
+  max-width: 4px;
   background-color: #fdd835;
   border-radius: 0;
   margin-left: 6px;
@@ -256,10 +259,7 @@ main {
 
 input[type="range"]#year {
   height: 1rem;
-  z-index: 1;
   margin: 0;
-  -webkit-appearance: none;
-  appearance: none;
   background-color: rgba(0, 0, 0, 0);
   border-radius: 1rem;
   cursor: pointer;
@@ -297,7 +297,8 @@ input[type="range"]::-ms-slider-thumb {
 .year-background,
 #year-progress,
 span[data-tick],
-#year-marker {
+#year-marker,
+.year-labels {
   pointer-events: none;
 }
 
@@ -372,12 +373,10 @@ span[data-tick]:nth-of-type(10) {
   right: auto;
   left: 0;
   transform: translateX(-1rem);
-  /* background-color: #393939; */
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
   border: solid 0.25rem #393939;
-  box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 #year-marker::after {
   content: "";
@@ -531,7 +530,7 @@ fieldset {
     flex-wrap: wrap;
   }
   #map-container {
-    height: 600px;
+    height: 500px;
     width: 100%;
   }
   #legend {

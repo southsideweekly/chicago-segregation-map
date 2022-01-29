@@ -53,14 +53,14 @@ function updateMapYear(year) {
     el.classList.toggle("active", +el.dataset.tick <= yearInput.value)
   })
 
-  map.setFilter("cha", ["<", ["get", "constructed"], ["+", 10, +year]])
+  map.setFilter("cha", ["<", ["get", "constructed"], ["+", 10, year]])
 
   document
     .querySelectorAll(".layer-options label[data-min-year]")
     .forEach((el) => {
       el.classList.toggle(
         "hidden",
-        !!el.dataset.minYear && +year < +el.dataset.minYear
+        !!el.dataset.minYear && year < +el.dataset.minYear
       )
     })
 }
@@ -74,7 +74,7 @@ function onMapUpdate() {
   const formObj = formToObj(form)
 
   updateMapRace(formObj)
-  updateMapYear(year.value)
+  updateMapYear(+yearInput.value)
 
   const layers = formObj.layer.split(",")
 
