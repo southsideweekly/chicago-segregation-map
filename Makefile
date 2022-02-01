@@ -1,4 +1,4 @@
-S3_BUCKET = ssw-segregation-map-demo
+S3_BUCKET = first-hand-segregation
 YEARS = 1930 1940 1950 1960 1970 1980 1990 2000 2010 2020
 
 all: $(foreach year, $(YEARS), data/tiles/tracts-$(year)) data/tiles/redlining data/layers/school-closures.geojson data/layers/highways-chicago.geojson
