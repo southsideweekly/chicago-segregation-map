@@ -21,9 +21,7 @@
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "maxzoom": 14,
-      "tiles": ["https://tiles.citybureau.org/{z}/{x}/{y}.pbf"],
-      "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>"
+      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key=dfoeHDqYkH7YCYE2qmzt"
     },
     "redlining": {
       "type": "vector",
@@ -152,7 +150,7 @@
     }
   },
   "sprite": "https://openmaptiles.github.io/positron-gl-style/sprite",
-  "glyphs": "https://tiles.citybureau.org/fonts/{fontstack}/{range}.pbf",
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=dfoeHDqYkH7YCYE2qmzt",
   "layers": [
     {
       "id": "background",
