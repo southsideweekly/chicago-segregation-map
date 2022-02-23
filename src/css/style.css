@@ -526,7 +526,7 @@ span[data-tick]:nth-of-type(10) {
   padding-top: 2rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   body,
   main {
     min-height: auto;
