@@ -26,7 +26,7 @@
     "redlining": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/redlining/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/redlining/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -35,23 +35,23 @@
     },
     "school-closures": {
       "type": "geojson",
-      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/school-closures.geojson",
+      "data": "https://first-hand-segregation.s3.amazonaws.com/layers/school-closures.geojson",
       "attribution": "The Chicago Reporter"
     },
     "cha": {
       "type": "geojson",
-      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/cha.geojson",
+      "data": "https://first-hand-segregation.s3.amazonaws.com/layers/cha.geojson",
       "attribution": "Chicago Housing Authority"
     },
     "highways": {
       "type": "geojson",
-      "data": "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/layers/highways-chicago.geojson",
+      "data": "https://first-hand-segregation.s3.amazonaws.com/layers/highways-chicago.geojson",
       "attribution": "United States. Bureau of Transportation Statistics"
     },
     "tracts-1930": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1930/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1930/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -61,7 +61,7 @@
     "tracts-1940": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1940/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1940/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -71,7 +71,7 @@
     "tracts-1950": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1950/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1950/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -81,7 +81,7 @@
     "tracts-1960": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1960/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1960/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -91,7 +91,7 @@
     "tracts-1970": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1970/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -101,7 +101,7 @@
     "tracts-1980": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1980/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1980/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -111,7 +111,7 @@
     "tracts-1990": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-1990/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-1990/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -121,7 +121,7 @@
     "tracts-2000": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-2000/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-2000/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -131,7 +131,7 @@
     "tracts-2010": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-2010/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-2010/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,
@@ -141,7 +141,7 @@
     "tracts-2020": {
       "type": "vector",
       "tiles": [
-        "https://ssw-segregation-map-demo.s3.us-east-2.amazonaws.com/tiles/tracts-2020/{z}/{x}/{y}.pbf"
+        "https://first-hand-segregation.s3.amazonaws.com/tiles/tracts-2020/{z}/{x}/{y}.pbf"
       ],
       "minzoom": 8,
       "maxzoom": 15,

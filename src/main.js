@@ -1,6 +1,5 @@
 import mapboxgl from "mapbox-gl"
-import Sidechain from "@nprapps/sidechain"
-
+import * as pym from "pym.js"
 import {
   formToObj,
   formToSearchParams,
@@ -176,5 +175,7 @@ map.once("styledata", () => {
     el.addEventListener("input", onMapUpdate)
   })
 
-  Sidechain.registerGuest()
+  if (params.get("pym")) {
+    new pym.Child({ polling: 500 })
+  }
 })

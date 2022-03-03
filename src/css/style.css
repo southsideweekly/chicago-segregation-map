@@ -33,6 +33,7 @@ main {
 }
 
 main {
+  min-height: 600px;
   height: 100%;
 }
 
@@ -524,6 +525,52 @@ span[data-tick]:nth-of-type(10) {
 
 .footnotes {
   padding-top: 2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .embedded body,
+  .embedded main {
+    min-height: auto;
+  }
+  .embedded main {
+    flex-wrap: wrap;
+  }
+  .embedded #map-container {
+    height: 500px;
+    width: 100%;
+  }
+  .embedded #legend {
+    height: auto;
+    width: 100%;
+  }
+  .embedded #controls {
+    flex-grow: 0;
+  }
+  .embedded .controls-content {
+    flex-wrap: wrap;
+  }
+  .embedded .controls-content > * {
+    width: 100%;
+  }
+  .embedded .layer-options {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .embedded .layer-options > * {
+    width: 50%;
+  }
+  .embedded .legend-race,
+  .embedded .disparities {
+    padding: 0;
+  }
+  .embedded .legend-race {
+    padding-bottom: 1rem;
+    border-bottom: solid 1px #707070;
+  }
+  .embedded .disparities {
+    padding-top: 1.5rem;
+    border-width: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
