@@ -164,6 +164,9 @@ data/points/tracts-1930.geojson: data/census/tracts_1930.geojson data/layers/chi
 		-filter-fields race \
 		-o $@
 
+data/census/%.geojson:
+	wget -O $@ https://$(S3_BUCKET).s3.amazonaws.com/$@
+
 data/layers/cha.geojson: data/layers/cha.csv
 	mapshaper -i $< \
 		-points \
@@ -188,6 +191,9 @@ data/layers/usa-redlining.geojson:
 
 data/layers/highways-chicago.geojson: data/layers/highways.geojson data/layers/chicago.geojson
 	mapshaper -i $< -clip $(filter-out $<,$^) -o $@
+
+data/layers/highways.geojson:
+	wget -O $@ https://$(S3_BUCKET).s3.amazonaws.com/$@
 
 data/layers/chicago.geojson:
 	wget -O $@ 'https://data.cityofchicago.org/api/geospatial/sp34-6z76?method=export&format=GeoJSON'
